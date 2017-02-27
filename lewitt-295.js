@@ -28,3 +28,13 @@ function draw() {
 
 
 }
+
+function mousePressed() {
+
+  for (var posX = 0; posX <= 200; posX += random) {
+
+
+
+    rect(mouseX, mouseY, mouseY, mouseX);
+  }
+}
