@@ -1,47 +1,38 @@
-var bubbles = [];
-var sizes = [40, 70, 90, 30, 60, 100, 60, 70, 50, 30];
+var sizes = [20, 30, 30, 20, 120, 85, 60, 50];
+var allCircles = []
 
 function setup() {
-  createCanvas(600, 400);
-
-  for (var i = 0; i < 10; i++) {
-    bubbles[i] = {
-      x: 50 + i * 100,
-
+  createCanvas(1200, 500);
+  background(255);
+  noStroke();
+  colorMode(HSB);
+  for (var i = 0; i < sizes.length; i += 1) {
+    var circle = {
+      x: 50 + i * 150,
       y: height / 2,
-
+      speed: 1,
       r: sizes[i],
-
-      h: sizes[i],
-
-      display: function() {
-        colorMode(RGB);
-        noStroke();
-        fill((random(350)), 50, 100, 200, bubbles[i]);
-
-        ellipse(this.x, this.y, this.r, this.h);
-      },
-
-
-      move: function() {
-
-        this.x = this.x + random(-1, 1);
-
-
-        this.y = this.y + random(-1, 1);
-      }
-    }
+      h: random(0, 360)
+    };
+    append(allCircles, circle);
   }
-
 }
 
 function draw() {
   background(0);
-  for (var i = 0; i < bubbles.length; i++) {
-
-    ellipse(50 + i * 100, height / 2, bubbles[i], bubbles[i]);
-
-    bubbles[i].move();
-    bubbles[i].display();
+  for (var i = 0; i < allCircles.length; i += 1) {
+    paint(allCircles[i]);
+    move(allCircles[i]);
   }
+}
+
+function paint(circle) {
+  colorMode(HSB);
+  fill(circle.h, 100, 100);
+  noStroke();
+  ellipse(circle.x, circle.y, circle.r, circle.r);
+}
+
+function move(circle) {
+  circle.y += random(-1, 1);
 }
