@@ -1,4 +1,5 @@
 var bubbles = [];
+var sizes = [40, 70, 90, 30, 60, 100, 60, 70, 50, 30];
 
 function setup() {
   createCanvas(600, 400);
@@ -7,11 +8,11 @@ function setup() {
     bubbles[i] = {
       x: 50 + i * 100,
 
-      y: height / i,
+      y: height / 2,
 
-      r: height / i,
+      r: sizes[i],
 
-      h: width / i,
+      h: sizes[i],
 
       display: function() {
         colorMode(RGB);
@@ -24,10 +25,10 @@ function setup() {
 
       move: function() {
 
-        this.x = this.x + random(-3, 3);
+        this.x = this.x + random(-1, 1);
 
 
-        this.y = this.y + random(-3, 3);
+        this.y = this.y + random(-1, 1);
       }
     }
   }
